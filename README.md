@@ -18,7 +18,17 @@ After setting your query model on the properties file, you can make a query via 
 
 `sh bin/interactive_terrier.sh`
 
-
+# TREC Topics
+Abbiamo utilizzato TREC Topics come _evaluation corpus_.
+Questi contengono quattro campi indicati dai tag: _num, title, description, narrative._
+Il campo _num_ contiene un numero identificativo per il topic.
+Il campo _title_ contiene una piccola query, tipica di una web application, mentre _description_ una versione più precisa e più lunga.
+Il campo _narrative_ descrive invece il criterio usato per l'assegnazione della rilevanza e dunque non viene considerato come query.
+```
+TrecQueryTags.idtag=num
+TrecQueryTags.process=title,desc
+TrecQueryTags.skip=narr
+```
 # Runs
 Ho eseguito quattro run sulla collezione:
 
