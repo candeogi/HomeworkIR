@@ -36,3 +36,51 @@ Ho eseguito quattro run sulla collezione:
 2. Stoplist, Porter Stemmer, TF_IDF
 3. No Stoplist, Porter Stemmer, BM25
 4. No Stoplist, No Porter Stemmer, TF_IDF
+
+# Evaluation Corpus 
+_Test Collection_ or _evaluation corpus_: documents, queries and relevance judgements.
+	
+Relevance judgements. -> QRels file
+Nel nostro caso la _relevance judgement_ è binaria, questo significa che il documento o è rilevante o non lo è.
+
+Pooling.
+
+Prende i top k result (k tra 50 e 200) del ranking ottenuto da diversi search engines o retrieval algorithms.
+Vengono mergiati in una pool (rimuovendo i duplicati) e i documenti sono presentati in ordine random.
+Nel caso dell'homework i trec topic sono 50 (351-400).
+
+# Evaluation con trec_terrier
+Se specificati su `terrier.properties` i campi:
+```
+#location of topics
+trec.topics=/home/giovannicandeo/IR/default_data/topics.351-400_trec7.txt
+#location of qrels
+trec.qrels=/home/giovannicandeo/IR/default_data/qrels.trec7.txt
+```
+Posso eseguire il comando
+`sh bin/trec_terrier.sh -r`
+
+Crea i risultati in `var/results`. 
+Poi posso eseguire l'evaluation con:
+`bin/trec_terrier.sh -e ./var/results/TF_IDF_0.res` 
+dove il path cambia in base al file results. 
+
+I risultati dell'evaluation saranno contenuti in `var/results/TF_IDF_0.eval`.
+
+# Evaluation con trec_eval 9.0
+```
+./trec_eval -q -m set pool.txt run.txt
+```
+Per set-based evaluation uso `set`. Altrimenti `all_trec`
+
+Nel nostro caso prendiamo come pool le qrels nel path:
+`/home/giovannicandeo/IR/default_data/qrels.trec7.txt`
+E la run fatta in terrier contenuta nel file:
+`/home/giovannicandeo/terrier-core-4.4/var/results/TF_IDF_0.res`
+
+```
+./trec_eval -q -m all_trec /home/giovannicandeo/IR/default_data/qrels.trec7.txt /home/giovannicandeo/terrier-core-4.4/var/results/TF_IDF_0.res
+```
+
+# ANOVA 
+to-do..
