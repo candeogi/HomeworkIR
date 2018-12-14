@@ -78,9 +78,18 @@ Nel nostro caso prendiamo come pool le qrels nel path:
 E la run fatta in terrier contenuta nel file:
 `/home/giovannicandeo/terrier-core-4.4/var/results/TF_IDF_0.res`
 
+Nel contesto possiamo usare ad esempio questo comando da terminale per salvarci i risultati su un file txt.
+
 ```
-./trec_eval -q -m all_trec /home/giovannicandeo/IR/default_data/qrels.trec7.txt /home/giovannicandeo/terrier-core-4.4/var/results/TF_IDF_0.res
+./trec_eval -q -m all_trec /home/giovannicandeo/IR/default_data/qrels.trec7.txt /home/giovannicandeo/terrier-core-4.4/var/results/TF_IDF_0.res > /home/giovannicandeo/IR/HomeworkIR/trecEvalResults/evauationRun0.txt
 ```
 
 # ANOVA 
-to-do..
+
+https://books.google.it/books?id=fxRwDwAAQBAJ&pg=PA44&lpg=PA44&dq=one+way+ANOVA+information+retrieval&source=bl&ots=-EFdNdi-BW&sig=7BhAzY3OrGV3x6sTmKwRDDQ6YWY&hl=it&sa=X&ved=2ahUKEwjYup7W457fAhWOuIsKHWZXD2gQ6AEwBXoECAcQAQ#v=onepage&q=one%20way%20ANOVA%20information%20retrieval&f=false
+
+trecEvalResultFile = fopen('evauationRun0.txt');
+
+c = textscan(trecEvalResultFile,'%s %s %f /n');
+
+fclose(trecEvalResultFile);
