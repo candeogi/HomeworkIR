@@ -5,13 +5,13 @@ pathName = '';
 for runNumber = 1:4
     switch runNumber
         case 1
-            pathName = '../trecEvalResults/evauationRun0.txt';
+            pathName = '../trecEvalResults/evaluationRun1.txt';
         case 2
-            pathName = '../trecEvalResults/evauationRun0.txt';
+            pathName = '../trecEvalResults/evaluationRun2.txt';
         case 3
-            pathName = '../trecEvalResults/evauationRun0.txt';
+            pathName = '../trecEvalResults/evaluationRun3.txt';
         case 4
-            pathName = '../trecEvalResults/evauationRun0.txt';
+            pathName = '../trecEvalResults/evaluationRun4.txt';
         otherwise
             warning('Unexpected run number.');       
     end
@@ -37,13 +37,17 @@ for i = 1:50
 end
 
 %create measure matrix
-measure = ones(50,4);
+measureMAP = ones(50,4);
+measureRPrec = ones(50,4); 
+measureP_10 = ones(50,4);
 for i = 1:50
     for j = 1:4
-        measure(i,j)=run(j).topic(i).map;
+        measureMAP(i,j)=run(j).topic(i).map;
+        measureRPrec(i,j)=run(j).topic(i).Rprec;
+        measureP_10(i,j)=run(j).topic(i).P_10;
     end
 end
 
 %save runID, topicID and measure to mat file for ANOVA test
-save('evalData.mat', 'runID', 'topicID', 'measure');  
+save('evalData.mat', 'runID', 'topicID', 'measureMAP', 'measureRPrec', 'measureP_10');  
 

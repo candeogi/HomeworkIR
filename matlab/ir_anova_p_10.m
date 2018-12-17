@@ -1,25 +1,11 @@
-%
-% Copyright 2018-2019 University of Padua, Italy
-%
-% Licensed under the Apache License, Version 2.0 (the "License");
-% you may not use this file except in compliance with the License.
-% You may obtain a copy of the License at
-%
-%     http://www.apache.org/licenses/LICENSE-2.0
-%
-% Unless required by applicable law or agreed to in writing, software
-% distributed under the License is distributed on an "AS IS" BASIS,
-% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-% See the License for the specific language governing permissions and
-% limitations under the License.
-%
-% Author: Nicola Ferro (ferro@dei.unipd.it)
+% Anova test and plots
+% 
+% Code thanks to Nicola Ferro (ferro@dei.unipd.it) from repository below:
+% https://bitbucket.org/frrncl/ir-unipd/src
 
 load('evalData.mat')
 
-% the mean for each run across the topics
-% Note that if the measure is AP (Average Precision), 
-% this is exactly MAP (Mean Average Precision) for each run
+measure = measureP_10;
 m = mean(measure);
 
 % sort in descending order of mean score
@@ -49,7 +35,7 @@ currentFigure = gcf;
 
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Average Precision (AP)';
+    ax.XLabel.String = 'Precision at 10 (P_10)';
     ax.YLabel.String = 'Run';
 
     currentFigure.PaperPositionMode = 'auto';
@@ -57,7 +43,7 @@ currentFigure = gcf;
     currentFigure.PaperSize = [42 22];
     currentFigure.PaperPosition = [1 1 40 20];
 
-print(currentFigure, '-dpdf', 'ap-tukey.pdf');
+print(currentFigure, '-dpdf', 'p10-tukey.pdf');
     
     
 % box plot
@@ -69,7 +55,7 @@ currentFigure = figure;
     
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Average Precision (AP)';
+    ax.XLabel.String = 'Precision at 10 (P_10)';
     ax.YLabel.String = 'Run';
     
     currentFigure.PaperPositionMode = 'auto';
@@ -77,6 +63,6 @@ currentFigure = figure;
     currentFigure.PaperSize = [42 22];
     currentFigure.PaperPosition = [1 1 40 20];
 
-print(currentFigure, '-dpdf', 'ap-boxplot.pdf');
+print(currentFigure, '-dpdf', 'p10-boxplot.pdf');
 
 
