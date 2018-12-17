@@ -1,10 +1,6 @@
 
 offset = 91;
 %todo change run file
-trecEvalResultFileRun1 = fopen('../trecEvalResults/evauationRun0.txt');
-trecEvalResultFileRun2 = fopen('../trecEvalResults/evauationRun0.txt');
-trecEvalResultFileRun3 = fopen('../trecEvalResults/evauationRun0.txt');
-trecEvalResultFileRun4 = fopen('../trecEvalResults/evauationRun0.txt');
 pathName = '';
 for runNumber = 1:4
     switch runNumber
@@ -17,7 +13,7 @@ for runNumber = 1:4
         case 4
             pathName = '../trecEvalResults/evauationRun0.txt';
         otherwise
-            warning('Unexpected run number.')       
+            warning('Unexpected run number.');       
     end
     trecEvalResultFileRun1 = fopen(pathName);
     evalData = textscan(trecEvalResultFileRun1,'%s %s %s');
@@ -30,9 +26,24 @@ for runNumber = 1:4
     fclose(trecEvalResultFileRun1);
 end
 
+
+%create runID cell array
+runID = {'run1', 'run2', 'run3', 'run4'};
+
+%create topicID cell array
+topicID = {};
+for i = 1:50
+    topicID{i} = run(1).topic(i).id;
+end
+
+%create measure matrix
 measure = ones(50,4);
 for i = 1:50
     for j = 1:4
-        measure(i,j)=topic(i).map;
+        measure(i,j)=run(j).topic(i).map;
     end
 end
+
+%save runID, topicID and measure to mat file for ANOVA test
+save('evalData.mat', 'runID', 'topicID', 'measure');  
+
