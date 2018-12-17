@@ -35,7 +35,7 @@ currentFigure = gcf;
 
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Precision at 10 (P_10)';
+    ax.XLabel.String = 'Precision at 10 (P10)';
     ax.YLabel.String = 'Run';
 
     currentFigure.PaperPositionMode = 'auto';
@@ -55,7 +55,7 @@ currentFigure = figure;
     
     ax = gca;
     ax.FontSize = 20;
-    ax.XLabel.String = 'Precision at 10 (P_10)';
+    ax.XLabel.String = 'Precision at 10 (P10)';
     ax.YLabel.String = 'Run';
     
     currentFigure.PaperPositionMode = 'auto';
