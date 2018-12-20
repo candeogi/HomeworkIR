@@ -23,9 +23,9 @@ for runNumber = 1:4
         run(runNumber).topic(i).Rprec = str2double(evalData{3}{5+offset*(i-1)});
         run(runNumber).topic(i).P_10 = str2double(evalData{3}{20+offset*(i-1)});
     end
-    evalAllData(runNumber).MAP = evalData{3}{4556}; %ALL MAP
-    evalAllData(runNumber).Rprec = evalData{3}{4558}; %ALL Rprec
-    evalAllData(runNumber).P_10 = evalData{3}{4573}; %ALL P_10
+    allData(runNumber).MAP = evalData{3}{4556};
+    allData(runNumber).Rprec = evalData{3}{4556};
+    allData(runNumber).P_10 = evalData{3}{4556};
     fclose(trecEvalResultFileRun1);
 end
 
@@ -55,5 +55,9 @@ save('evalData.mat', 'runID', 'topicID', 'measureMAP', 'measureRPrec', 'measureP
 
 %save ALL MAP,Rprec, P_10
 
-save('evalAllData.mat', 'evalAllData');
+for j = 1:4
+    measureMAP(i,j)=run(j).topic(i).map;
+    measureRPrec(i,j)=run(j).topic(i).Rprec;
+    measureP_10(i,j)=run(j).topic(i).P_10;
+end
 
