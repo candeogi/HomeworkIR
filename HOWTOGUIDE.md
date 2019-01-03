@@ -11,6 +11,8 @@ After that you can set the terrier.properties file and proceed with indexing:
 Index will be created on var/index folder of terrier. 
 You can also use the command `--printstats` to see stats related to the index.
 
+`sh bin/trec_terrier.sh --printstats`
+
 After setting your query model on the properties file, you can make a query via batch by using the command:
 
 `sh bin/interactive_terrier.sh`
