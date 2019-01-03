@@ -1,17 +1,16 @@
 
 offset = 91;
-%todo change run file
 pathName = '';
 for runNumber = 1:4
     switch runNumber
         case 1
-            pathName = '../trecEvalResults/evaluationRun1.txt';
+            pathName = '../../evaluations/evaluation_BM25_SL_PS_ignorelowidf.txt';
         case 2
-            pathName = '../trecEvalResults/evaluationRun2.txt';
+            pathName = '../../evaluations/evaluation_TFIDF_SL_PS_ignorelowidf.txt';
         case 3
-            pathName = '../trecEvalResults/evaluationRun3.txt';
+            pathName = '../../evaluations/evaluation_BM25_PS_ignorelowidf.txt';
         case 4
-            pathName = '../trecEvalResults/evaluationRun4.txt';
+            pathName = '../../evaluations/evaluation_TFIDF_ignorelowidf.txt';
         otherwise
             warning('Unexpected run number.');       
     end
@@ -31,7 +30,7 @@ end
 
 
 %create runID cell array
-runID = {'run1', 'run2', 'run3', 'run4'};
+runID = {'BM25_SL_PS','TFIDF_SL_PS','BM25_PS','TFIDF'};
 
 %create topicID cell array
 topicID = {};

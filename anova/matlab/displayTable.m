@@ -25,7 +25,7 @@ thirdCol  = [
     ]; 
 evalTable = table(firstCol, secondCol, thirdCol,...
     'VariableNames',{'MAP','Rprec','P_10'},...
-    'RowNames',{'Run1','Run2','Run3','Run4'})
+    'RowNames',{'BM25_SL_PS','TFIDF_SL_PS','BM25_PS','TFIDF'})
 
 
 
