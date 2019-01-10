@@ -9,15 +9,19 @@ measure = measureRPrec;
 m = mean(measure);
 
 % sort in descending order of mean score
-[~, idx] = sort(m, 'descend');
+%[~, idx] = sort(m, 'descend');
 
 % re-order runs by ascending mean of the measure
 % needed to have a more nice looking box plot
-measure = measure(:, idx);
-runID = runID(idx);
+%measureA = measure(:, idx);
+%runIDA = runID(idx);
+
+%ignoring sorting for this measure to match other graphs
+measureA = measure;
+runIDA = runID;
 
 % perform the ANOVA
-[~, tbl, sts] = anova1(measure, runID, 'off');
+[~, tbl, sts] = anova1(measureA, runIDA, 'off');
 
 % display the ANOVA table
 tbl
